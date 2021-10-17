@@ -1,0 +1,39 @@
+1. What tech stack will you use for your final project? We recommend that you use
+React and Node for this project, however if you are extremely interested in
+becoming a Python developer you are welcome to use Python/Flask for this
+project.
+-React, Node, Express, PostgreSQL
+2. Is the front-end UI or the back-end going to be the focus of your project? Or are
+you going to make an evenly focused full-stack application?
+-Backend focused / evenly focused full-stack
+3. Will this be a website? A mobile app? Something else?
+-Website
+4. What goal will your project be designed to achieve?
+-Allows hair stylists that offer ethnic hair services to register as a stylist and post pictures of their work, their contact info, and how to schedule with them. Users seeking services can input their zipcode and find a stylist near them that offers ethnic hair services, view stylist profiles, leave reviews, add stylists to their favorites.
+5. What kind of users will visit your app? In other words, what is the demographic of
+your users?
+-Men, Women, and Children of Color who are specifically looking for stylists that know how to work with textured hair and stylists who offer those services.
+6. What data do you plan on using? How are you planning on collecting your data?
+You may have not picked your actual API yet, which is fine, just outline what kind
+of data you would like it to contain. You are welcome to create your own API and
+populate it with data. If you are using a Python/Flask stack are required to create
+your own API.
+-Will store data from users and stylists during account creation. Data from stylists would include name, email, salon name, location, services offered, social media handles, phone number, and images of work. Data from users would include name, email, zipcode. Using a maps API, project will be able to show stylists that are registered in the user's area.
+7. In brief, outline your approach to creating your project (knowing that you may not
+know everything in advance and that these details might change later). Answer
+questions like the ones below, but feel free to add more information:
+a. What does your database schema look like?
+-Stylists table would include name, email, salon name, reviews, location, services offered, social media handles, phone number, and images of work. Users table would include name, email, password, favorited stylists, reviews, zipcode.
+b. What kinds of issues might you run into with your API? This is especially
+important if you are creating your own API, web scraping produces
+notoriously messy data.
+-
+c. Is there any sensitive information you need to secure?
+-passwords
+d. What functionality will your app include?
+-Login/signup, find stylist near me, leave reviews, view stylist profiles
+e. What will the user flow look like?
+-A user will encounter a signup/login page and be able to choose if they are a stylist or regular user to register and input their information. After registration they will be taken to the main page that will populate a map and list of stylists closest to their area. User will be able to click on a stylist name to view their profile page with all of the stylist's details including services, reviews, images, etc.
+f. What features make your site more than a CRUD app? What are your
+stretch goals?
+-Reviews, location services
