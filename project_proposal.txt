@@ -36,4 +36,4 @@ e. What will the user flow look like?
 -A user will encounter a signup/login page and be able to choose if they are a stylist or regular user to register and input their information. After registration they will be taken to the main page that will populate a map and list of stylists closest to their area. User will be able to click on a stylist name to view their profile page with all of the stylist's details including services, reviews, images, etc.
 f. What features make your site more than a CRUD app? What are your
 stretch goals?
--Reviews, location services
+-Favoriting stylists, location services, stretch goals: reviews, security implementations
