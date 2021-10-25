@@ -27,4 +27,4 @@ psql -U $USER < $SCHEMA
 node generator.js --output=$FILEPATH --lines=$LINES
 
 ### Import Our posts.csv file to seed Database ###
-psql -U $USER -d $DATABASE -c "COPY stylists FROM 'C:/Users/linds/OneDrive/Desktop/Springboard/Capstone2/backend/stylists.csv' DELIMITER '|' CSV HEADER";
+psql -U $USER -d $DATABASE -c "COPY stylists FROM '$FILEPATH' DELIMITER '|' CSV HEADER";

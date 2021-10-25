@@ -24,6 +24,7 @@ CREATE TABLE stylists (
   facebook_url TEXT,
   website_url TEXT,
   images TEXT ARRAY,
+  services TEXT ARRAY,
   salon_name VARCHAR(50),
   phone_number VARCHAR(50),
   street_address VARCHAR(255),

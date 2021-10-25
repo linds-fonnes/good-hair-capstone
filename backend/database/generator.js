@@ -27,10 +27,17 @@ const createStylist = () => {
   const phone_number = faker.phone.phoneNumberFormat();
   const street_address = faker.address.streetAddress();
   const city = faker.address.city();
-  const state = faker.address.state();
+  const state = faker.address.stateAbbr();
   const zipcode = faker.address.zipCodeByState(state);
+  const services = [
+    "Box Braids",
+    "Crochet Braids",
+    "Relaxer",
+    "Full Sew-In",
+    "Silk Press",
+  ];
 
-  return `${email}|${password}|${first_name}|${last_name}|${instagram_url}|${facebook_url}|${website_url}|{${images}}|${salon_name}|${phone_number}|${street_address}|${city}|${state}|${zipcode}\n`;
+  return `${email}|${password}|${first_name}|${last_name}|${instagram_url}|${facebook_url}|${website_url}|{${images}}|{${services}}|${salon_name}|${phone_number}|${street_address}|${city}|${state}|${zipcode}\n`;
 };
 
 const startWriting = (writeStream, encoding, done) => {
@@ -61,7 +68,7 @@ const startWriting = (writeStream, encoding, done) => {
 
 //write our `header` line before we invoke the loop
 stream.write(
-  `email,password,first_name,last_name,instagram_url,facebook_url,website_url,images,salon_name,phone_number,street_address,city,state,zipcode\n`,
+  `email,password,first_name,last_name,instagram_url,facebook_url,website_url,images,services,salon_name,phone_number,street_address,city,state,zipcode\n`,
   "utf-8"
 );
 //invoke startWriting and pass callback
