@@ -13,7 +13,7 @@ class GoodHairApi {
     const params = method === "get" ? data : {};
 
     try {
-      return (await axios({ url, method, data, params, headers })).data;
+      return await axios({ url, method, data, params, headers });
     } catch (err) {
       console.error("API Error:", err.response);
       let message = err.response.data.error.message;
@@ -25,10 +25,10 @@ class GoodHairApi {
     let res;
     if (userType === "stylist") {
       res = await this.request(`stylists/${email}/profile`);
-      return res.stylist;
+      return res;
     } else if (userType === "client") {
       res = await this.request(`clients/${email}/profile`);
-      return res.client;
+      return res;
     }
   }
 
@@ -40,7 +40,7 @@ class GoodHairApi {
       res = await this.request(`clients/register`, data, "post");
     }
 
-    return res.token;
+    return res;
   }
 
   static async login(userType, data) {
@@ -49,8 +49,14 @@ class GoodHairApi {
       res = await this.request(`stylists/login`, data, "post");
     } else if (userType === "client") {
       res = await this.request(`clients/login`, data, "post");
+      console.log(userType, data, res);
     }
-    return res.token;
+    return res;
+  }
+
+  static async getStylists(zipcode) {
+    let res = await this.request(`stylists/search?zipcode=${zipcode}`);
+    return res;
   }
 }
 

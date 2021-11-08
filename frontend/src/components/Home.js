@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import UserContext from "../UserContext";
+import React from "react";
 
 function Homepage() {
-  const { currentUser } = useContext(UserContext);
   return (
     <div>
       <h1>Good Hair</h1>

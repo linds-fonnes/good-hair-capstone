@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import UserContext from "../UserContext";
 
-function SignupForm({ signup }) {
+function StylistSignupForm({ signup }) {
+  const { userType } = useContext(UserContext);
+  console.log("USERTYPE", userType);
   const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
@@ -24,9 +27,9 @@ function SignupForm({ signup }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await signup(formData);
+    let result = await signup(userType, formData);
     if (result.success) {
-      history.push("/companies");
+      history.push("/stylists/search");
     } else {
       setFormErrors(result.errors);
     }
@@ -78,9 +81,49 @@ function SignupForm({ signup }) {
           value={formData.website_url}
           onChange={handleChange}
         />
+        <label>Images Urls </label>
+        <input name="images" value={formData.images} onChange={handleChange} />
+        <label>Services </label>
+        <input
+          name="services"
+          value={formData.services}
+          onChange={handleChange}
+        />
+        <label>Salon Name </label>
+        <input
+          name="salon_name"
+          value={formData.salon_name}
+          onChange={handleChange}
+        />
+        <label>Phone Number </label>
+        <input
+          name="phone_number"
+          value={formData.phone_number}
+          onChange={handleChange}
+        />
+        <label>Street Address </label>
+        <input
+          name="street_address"
+          value={formData.street_address}
+          onChange={handleChange}
+        />
+        <label>City </label>
+        <input name="city" value={formData.city} onChange={handleChange} />
+        <label>State </label>
+        <input name="state" value={formData.state} onChange={handleChange} />
+        <label>Zipcode </label>
+        <input
+          name="zipcode"
+          value={formData.zipcode}
+          onChange={handleChange}
+        />
+        {formErrors.length ? <p>{formErrors}</p> : null}
+        <button type="submit" onSubmit={handleSubmit}>
+          Submit
+        </button>
       </form>
     </div>
   );
 }
 
-export default SignupForm;
+export default StylistSignupForm;

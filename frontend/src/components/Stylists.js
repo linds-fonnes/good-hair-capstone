@@ -8,12 +8,12 @@ function Stylists() {
 
   return (
     <div>
-      <a>
-        <Link to="/signup">Sign Up as a Stylist</Link>
-      </a>
-      <a>
+      <button>
+        <Link to="/stylists/signup">Sign Up as a Stylist</Link>
+      </button>
+      <button>
         <Link to="/login">Login as a Stylist</Link>
-      </a>
+      </button>
     </div>
   );
 }

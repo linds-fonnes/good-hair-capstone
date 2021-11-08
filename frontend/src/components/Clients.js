@@ -8,12 +8,12 @@ function Clients() {
 
   return (
     <div>
-      <a>
-        <Link to="/signup">Sign Up as a Client</Link>
-      </a>
-      <a>
+      <button>
+        <Link to="/clients/signup">Sign Up as a Client</Link>
+      </button>
+      <button href="">
         <Link to="/login">Login as a Client</Link>
-      </a>
+      </button>
     </div>
   );
 }

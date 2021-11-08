@@ -40,9 +40,9 @@ function App() {
     setUserType(null);
   }
 
-  async function signup(signupData) {
+  async function signup(userType, signupData) {
     try {
-      let token = await GoodHairApi.signup(signupData);
+      let token = await GoodHairApi.signup(userType, signupData);
       setToken(token);
       return { success: true };
     } catch (errors) {
@@ -51,9 +51,9 @@ function App() {
     }
   }
 
-  async function login(loginData) {
+  async function login(userType, loginData) {
     try {
-      let token = await GoodHairApi.login(loginData);
+      let token = await GoodHairApi.login(userType, loginData);
       setToken(token);
       return { success: true };
     } catch (errors) {
