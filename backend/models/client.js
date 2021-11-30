@@ -37,7 +37,7 @@ class Client {
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const result = await db.query(
-      `INSERT INTO clients(email, password, first_name, last_name, zipcode) VALUES ($1, $2, $3, $4, $5)`,
+      `INSERT INTO clients(email, password, first_name, last_name, zipcode) VALUES ($1, $2, $3, $4, $5) RETURNING email, first_name, last_name, zipcode`,
       [email, hashedPassword, first_name, last_name, zipcode]
     );
     return result.rows[0];

@@ -1,1 +1,1 @@
-https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-javascript
+https://www.zip-codes.com/zip-code-api-documentation.asp

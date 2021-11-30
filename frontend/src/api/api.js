@@ -1,18 +1,22 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class GoodHairApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
+    console.log("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${GoodHairApi.token}` };
+    const headers = {
+      Authorization: `Bearer ${GoodHairApi.token}`,
+    };
+    console.log("HEADERS", headers);
     const params = method === "get" ? data : {};
 
     try {
+      console.log({ url, method, data, params, headers });
       return await axios({ url, method, data, params, headers });
     } catch (err) {
       console.error("API Error:", err.response);
@@ -21,36 +25,20 @@ class GoodHairApi {
     }
   }
 
-  static async getCurrentUser(userType, email) {
-    let res;
-    if (userType === "stylist") {
-      res = await this.request(`stylists/${email}/profile`);
-      return res;
-    } else if (userType === "client") {
-      res = await this.request(`clients/${email}/profile`);
-      return res;
-    }
-  }
-
-  static async signup(userType, data) {
-    let res;
-    if (userType === "stylist") {
-      res = await this.request(`stylists/register`, data, "post");
-    } else if (userType === "client") {
-      res = await this.request(`clients/register`, data, "post");
-    }
-
+  static async getCurrentUser(email) {
+    let res = await this.request(`clients/${email}/profile`);
     return res;
   }
 
-  static async login(userType, data) {
-    let res;
-    if (userType === "stylist") {
-      res = await this.request(`stylists/login`, data, "post");
-    } else if (userType === "client") {
-      res = await this.request(`clients/login`, data, "post");
-      console.log(userType, data, res);
-    }
+  static async signup(data) {
+    let res = await this.request(`clients/register`, data, "post");
+    console.log({ res });
+    return res;
+  }
+
+  static async login(data) {
+    let res = await this.request(`clients/login`, data, "post");
+    console.log("RES", res);
     return res;
   }
 

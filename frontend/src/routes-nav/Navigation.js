@@ -28,10 +28,7 @@ function Navigation({ logout }) {
     return (
       <ul>
         <li>
-          <NavLink to="/stylists">Stylists</NavLink>
-        </li>
-        <li>
-          <NavLink to="/clients">Clients</NavLink>
+          <NavLink to="/clients">Client Registration</NavLink>
         </li>
       </ul>
     );

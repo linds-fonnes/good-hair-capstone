@@ -1,10 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../UserContext";
 
 function ClientSignupForm({ signup }) {
-  const { userType } = useContext(UserContext);
-  console.log("USERTYPE", userType);
   const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
@@ -17,7 +14,7 @@ function ClientSignupForm({ signup }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await signup(userType, formData);
+    let result = await signup(formData);
     if (result.success) {
       history.push("/stylists/search");
     } else {
@@ -32,7 +29,7 @@ function ClientSignupForm({ signup }) {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Email </label>
         <input name="email" value={formData.email} onChange={handleChange} />
         <label>Password </label>

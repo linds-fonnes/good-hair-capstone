@@ -4,9 +4,12 @@ const { NotFoundError } = require("./expressErrors");
 const stylistsRoutes = require("./routes/stylists");
 const clientsRoutes = require("./routes/clients");
 const { authenticateJWT } = require("./middleware/auth");
-
+const cors = require("cors");
+const morgan = require("morgan");
 const express = require("express");
 const app = express();
+app.use(morgan("dev"));
+app.use(cors());
 app.use(express.json());
 app.use(authenticateJWT);
 app.use("/stylists", stylistsRoutes);

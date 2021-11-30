@@ -12,15 +12,15 @@ export const TOKEN_STORAGE_ID = "goodhair-token";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-  const [userType, setUserType] = useState(null);
 
   useEffect(
     function loadUserInfo() {
       async function getCurrentUser() {
         if (token) {
           try {
-            let { email } = jwt.decode(token);
-            GoodHairApi.token = token;
+            console.log("APP token", token);
+            let { email } = jwt.decode(token.data.token);
+            GoodHairApi.token = token.data.token;
             let currentUser = await GoodHairApi.getCurrentUser(email);
             setCurrentUser(currentUser);
           } catch (err) {
@@ -37,12 +37,11 @@ function App() {
   function logout() {
     setCurrentUser(null);
     setToken(null);
-    setUserType(null);
   }
 
-  async function signup(userType, signupData) {
+  async function signup(signupData) {
     try {
-      let token = await GoodHairApi.signup(userType, signupData);
+      let token = await GoodHairApi.signup(signupData);
       setToken(token);
       return { success: true };
     } catch (errors) {
@@ -51,9 +50,9 @@ function App() {
     }
   }
 
-  async function login(userType, loginData) {
+  async function login(loginData) {
     try {
-      let token = await GoodHairApi.login(userType, loginData);
+      let token = await GoodHairApi.login(loginData);
       setToken(token);
       return { success: true };
     } catch (errors) {
@@ -63,9 +62,7 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <UserContext.Provider
-        value={{ currentUser, setCurrentUser, userType, setUserType }}
-      >
+      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <div className="App">
           <Navigation logout={logout} />
           <Routes login={login} signup={signup} />
