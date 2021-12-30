@@ -35,11 +35,9 @@ router.post("/login", async (req, res, next) => {
 
     const { email, password } = req.body;
     const client = await Client.authenticate(email, password);
-    console.log("CLIENT", client);
     const token = createToken(client);
     return res.json({ token });
   } catch (e) {
-    console.log("hello darkness my old friend");
     return next(e);
   }
 });

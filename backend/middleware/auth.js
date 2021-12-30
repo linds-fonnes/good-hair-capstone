@@ -10,7 +10,6 @@ function authenticateJWT(req, res, next) {
       authHeader &&
       authHeader.replace(/^[Bb]earer /, "").trim() !== "undefined"
     ) {
-      console.log("hello");
       const token = authHeader.replace(/^[Bb]earer /, "").trim();
       res.locals.user = jwt.verify(token, SECRET_KEY);
     }
