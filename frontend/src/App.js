@@ -18,11 +18,10 @@ function App() {
       async function getCurrentUser() {
         if (token) {
           try {
-            console.log("APP token", token);
-            let { email } = jwt.decode(token.data.token);
-            GoodHairApi.token = token.data.token;
-            let currentUser = await GoodHairApi.getCurrentUser(email);
-            setCurrentUser(currentUser);
+            let { email } = jwt.decode(token);
+            GoodHairApi.token = token;
+            let user = await GoodHairApi.getCurrentUser(email);
+            setCurrentUser(user.data.email);
           } catch (err) {
             console.error("loadUserInfo error:", err);
             setCurrentUser(null);

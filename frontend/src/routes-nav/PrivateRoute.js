@@ -15,7 +15,7 @@ function PrivateRoute({ exact, path, children }) {
   );
 
   if (!currentUser) {
-    return <Redirect to="/"></Redirect>;
+    return <Redirect to="/login"></Redirect>;
   }
 
   return (
