@@ -12,6 +12,7 @@ export const TOKEN_STORAGE_ID = "goodhair-token";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [favoritedIds, setFavoritedIds] = useState(new Set([]));
 
   useEffect(
     function loadUserInfo() {
@@ -22,6 +23,7 @@ function App() {
             GoodHairApi.token = token;
             let user = await GoodHairApi.getCurrentUser(email);
             setCurrentUser(user.data.email);
+            setFavoritedIds(new Set(currentUser.favorites));
           } catch (err) {
             console.error("loadUserInfo error:", err);
             setCurrentUser(null);
@@ -59,9 +61,27 @@ function App() {
       return { success: false, errors };
     }
   }
+
+  function hasFavoritedStylist(id) {
+    return favoritedIds.has(id);
+  }
+
+  function addFavorite(id) {
+    if (hasFavoritedStylist(id)) return;
+    GoodHairApi.addFavorite(currentUser.email, id);
+    setFavoritedIds(new Set([...favoritedIds, id]));
+  }
+
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <UserContext.Provider
+        value={{
+          currentUser,
+          setCurrentUser,
+          hasFavoritedStylist,
+          addFavorite,
+        }}
+      >
         <div className="App">
           <Navigation logout={logout} />
           <Routes login={login} signup={signup} />

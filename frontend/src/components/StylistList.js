@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import GoodHairApi from "../api/api";
 import SearchForm from "./SearchForm";
-import StylistCard from "./StylistCard";
 import StylistCardList from "./StylistCardList";
 
 function StylistList() {
@@ -15,7 +14,7 @@ function StylistList() {
   return (
     <div>
       <SearchForm searchFor={search} />
-      {stylists && stylists.length ? (
+      {stylists.length ? (
         <StylistCardList stylists={stylists} />
       ) : (
         <p>No results. Try a different zipcode</p>
