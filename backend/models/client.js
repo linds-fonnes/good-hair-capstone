@@ -11,7 +11,7 @@ const userLoginSchema = require("../schemas/userLogin.json");
 class Client {
   static async authenticate(email, password) {
     const result = await db.query(
-      `SELECT email, password, first_name, last_name, zipcode FROM clients WHERE email = $1`,
+      `SELECT email, password, first_name, last_name, zipcode, favorite_stylists FROM clients WHERE email = $1`,
       [email]
     );
 
@@ -37,7 +37,7 @@ class Client {
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const result = await db.query(
-      `INSERT INTO clients(email, password, first_name, last_name, zipcode) VALUES ($1, $2, $3, $4, $5) RETURNING email, first_name, last_name, zipcode`,
+      `INSERT INTO clients(email, password, first_name, last_name, zipcode) VALUES ($1, $2, $3, $4, $5) RETURNING email, first_name, last_name, zipcode, favorite_stylists`,
       [email, hashedPassword, first_name, last_name, zipcode]
     );
     return result.rows[0];
@@ -45,7 +45,7 @@ class Client {
 
   static async getByEmail(email) {
     const results = await db.query(
-      "SELECT email, first_name, last_name, zipcode FROM clients WHERE email=$1",
+      "SELECT email, first_name, last_name, zipcode, favorite_stylists FROM clients WHERE email=$1",
       [email]
     );
 
