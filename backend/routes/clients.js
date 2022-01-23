@@ -52,6 +52,17 @@ router.get("/:email/profile", ensureCorrectUser, async (req, res, next) => {
   }
 });
 
+router.post("/:email/favorite", ensureCorrectUser, async (req, res, next) => {
+  try {
+    const { email } = req.params;
+    const { stylist_email } = req.body;
+    const resp = await Client.addFavorite(email, stylist_email);
+    return res.json(resp);
+  } catch (e) {
+    return next(e);
+  }
+});
+
 router.patch("/:email/profile", ensureCorrectUser, async (req, res, next) => {
   try {
     const validator = jsonschema.validate(req.body, userUpdateSchema);

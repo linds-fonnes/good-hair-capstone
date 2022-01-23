@@ -72,7 +72,7 @@ router.get("/:email", ensureLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/:email/profile", ensureCorrectUser, async (req, res, next) => {
+router.get("/:email/profile", async (req, res, next) => {
   try {
     const { email } = req.params;
     const stylist = await Stylist.getByEmail(email);

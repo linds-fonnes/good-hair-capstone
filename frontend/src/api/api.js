@@ -43,6 +43,12 @@ class GoodHairApi {
     let res = await this.request(`stylists/search?zipcode=${zipcode}`);
     return res.data;
   }
+
+  static async getStylistProfile(email) {
+    let res = await this.request(`stylists/${email}/profile`);
+    console.log("RES", res);
+    return res.data;
+  }
 }
 
 export default GoodHairApi;

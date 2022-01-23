@@ -14,9 +14,9 @@ function PrivateRoute({ exact, path, children }) {
     currentUser
   );
 
-  if (!currentUser) {
-    return <Redirect to="/login"></Redirect>;
-  }
+  // if (!currentUser) {
+  //   return <Redirect to="/login"></Redirect>;
+  // }
 
   return (
     <Route exact={exact} path={path}>

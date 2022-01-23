@@ -6,6 +6,8 @@ import Clients from "../components/Clients";
 import ClientSignupForm from "../components/ClientSignupForm";
 import LoginForm from "../components/LoginForm";
 import PrivateRoute from "./PrivateRoute";
+import ClientProfile from "../components/ClientProfile";
+import StylistProfile from "../components/StylistProfile";
 
 function Routes({ login, signup }) {
   return (
@@ -25,6 +27,12 @@ function Routes({ login, signup }) {
         </Route>
         <PrivateRoute exact path="/stylists/search">
           <StylistList></StylistList>
+        </PrivateRoute>
+        <PrivateRoute exact path="/clients/profile">
+          <ClientProfile></ClientProfile>
+        </PrivateRoute>
+        <PrivateRoute exact path="/stylists/:email">
+          <StylistProfile></StylistProfile>
         </PrivateRoute>
         <Redirect to="/" />
       </Switch>

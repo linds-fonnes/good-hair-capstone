@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import UserContext from "../UserContext";
 
 function StylistCard({
-  id,
   first_name,
   last_name,
   salon_name,
@@ -17,14 +16,14 @@ function StylistCard({
 
   React.useEffect(
     function updateFavoritedStatus() {
-      setFavorite(hasFavoritedStylist(id));
+      setFavorite(hasFavoritedStylist(email));
     },
-    [id, hasFavoritedStylist]
+    [email, hasFavoritedStylist]
   );
 
   async function handleFavorite(evt) {
-    if (hasFavoritedStylist(id)) return;
-    addFavorite(id);
+    if (hasFavoritedStylist(email)) return;
+    addFavorite(email);
     setFavorite(true);
   }
 

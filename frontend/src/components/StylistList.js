@@ -14,7 +14,7 @@ function StylistList() {
   return (
     <div>
       <SearchForm searchFor={search} />
-      {stylists.length ? (
+      {stylists && stylists.length ? (
         <StylistCardList stylists={stylists} />
       ) : (
         <p>No results. Try a different zipcode</p>
