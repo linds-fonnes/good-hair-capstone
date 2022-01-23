@@ -85,7 +85,7 @@ class Stylist {
 
   static async search(radius) {
     const result = await db.query(
-      `SELECT first_name, last_name, salon_name, city, state, zipcode FROM stylists WHERE zipcode = any($1)`,
+      `SELECT first_name, last_name,email, salon_name, city, state, zipcode FROM stylists WHERE zipcode = any($1)`,
       [radius]
     );
     if (result.rows.length === 0)

@@ -10,14 +10,14 @@ function Navigation({ logout }) {
     return (
       <ul>
         <li>
-          <NavLink to="=/profile"></NavLink>
+          <NavLink to="/clients/profile">Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/search"></NavLink>
+          <NavLink to="/stylists/search">Find a Stylist</NavLink>
         </li>
         <li>
           <NavLink to="/" onClick={logout}>
-            Logout {currentUser.first_name}{" "}
+            Logout
           </NavLink>
         </li>
       </ul>

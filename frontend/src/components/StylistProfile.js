@@ -27,12 +27,25 @@ function StylistProfile() {
       <p>
         {profile.first_name} {profile.last_name}
       </p>
-      <p>{profile.email}</p>
-      <p>{profile.salon_name}</p>
+      <h2>Find Me At: </h2>
+      <p>{profile.salon_name} Salon</p>
       <p>{profile.street_address}</p>
       <p>
         {profile.state}, {profile.city} {profile.zipcode}
       </p>
+      <h3>Contact Me: </h3>
+      <p>{profile.email}</p>
+      <p>{profile.phone_number}</p>
+      <p>{profile.instagram_url}</p>
+      <p>{profile.website_url}</p>
+      <h4>Services Offered: </h4>
+      <p>{profile.services.toString()}</p>
+      <h4>Check Out My Work: </h4>
+      <div>
+        {profile.images.map((image) => (
+          <img src={image} alt="image not available" />
+        ))}
+      </div>
     </div>
   );
 }

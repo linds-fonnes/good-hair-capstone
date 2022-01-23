@@ -3,7 +3,7 @@ import StylistCard from "./StylistCard";
 import uuid from "react-uuid";
 
 function StylistCardList({ stylists }) {
-  console.debug("StylistCardList", "stylists=", stylists);
+  console.log("StylistCardList", "stylists=", stylists);
 
   return (
     <div>

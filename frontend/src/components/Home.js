@@ -9,14 +9,18 @@ function Homepage() {
     <div>
       <h1>Good Hair</h1>
       {currentUser ? (
-        <h2>Welcome Back {currentUser.first_name} </h2>
+        <div>
+          <h2>Welcome Back ! </h2>
+          <p>
+            <Link to="/stylists/search">Find Stylists Near You</Link>
+          </p>
+        </div>
       ) : (
         <p>
           <Link to="/login">Login</Link>
           <Link to="/clients/signup">Sign up</Link>
         </p>
       )}
-      <p>Find stylists near you </p>
     </div>
   );
 }
