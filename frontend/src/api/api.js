@@ -29,6 +29,11 @@ class GoodHairApi {
     return res;
   }
 
+  static async updateUser(email, data) {
+    let res = await this.request(`clients/${email}/profile`, data, "patch");
+    return res;
+  }
+
   static async signup(data) {
     let res = await this.request(`clients/register`, data, "post");
     return res;

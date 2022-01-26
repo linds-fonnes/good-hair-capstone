@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jsonschema = require("jsonschema");
 const { BadRequestError } = require("../expressErrors");
-const { ensureCorrectUser } = require("../middleware/auth");
+const { ensureCorrectUser, ensureLoggedIn } = require("../middleware/auth");
 const { createToken } = require("../helpers/tokenHelper");
 const Client = require("../models/client");
 const userLoginSchema = require("../schemas/userLogin.json");
@@ -63,7 +63,7 @@ router.post("/:email/favorite", ensureCorrectUser, async (req, res, next) => {
   }
 });
 
-router.patch("/:email/profile", ensureCorrectUser, async (req, res, next) => {
+router.patch("/:email/profile", ensureLoggedIn, async (req, res, next) => {
   try {
     const validator = jsonschema.validate(req.body, userUpdateSchema);
     if (!validator.valid) {
