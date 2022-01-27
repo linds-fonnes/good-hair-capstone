@@ -42,7 +42,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.get("/:email/profile", ensureCorrectUser, async (req, res, next) => {
+router.get("/:email/profile", ensureLoggedIn, async (req, res, next) => {
   try {
     const { email } = req.params;
     const client = await Client.getByEmail(email);

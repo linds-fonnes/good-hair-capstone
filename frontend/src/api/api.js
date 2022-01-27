@@ -51,9 +51,10 @@ class GoodHairApi {
 
   static async getStylistProfile(email) {
     let res = await this.request(`stylists/${email}/profile`);
-    console.log("RES", res);
     return res.data;
   }
+
+  static async addFavorite(clientEmail, stylistEmail) {}
 }
 
 export default GoodHairApi;

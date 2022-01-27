@@ -22,9 +22,8 @@ function App() {
             let { email } = jwt.decode(token);
             GoodHairApi.token = token;
             let user = await GoodHairApi.getCurrentUser(email);
-            console.log(user);
             setCurrentUser(user.data.email);
-            // setFavoritedIds(new Set(currentUser.favorite_stylists));
+            setFavoritedIds(new Set(user.data.favorite_stylists));
           } catch (err) {
             console.error("loadUserInfo error:", err);
             setCurrentUser(null);
@@ -67,9 +66,9 @@ function App() {
     return favoritedIds.has(id);
   }
 
-  function addFavorite(id) {
+  async function addFavorite(id) {
     if (hasFavoritedStylist(id)) return;
-    GoodHairApi.addFavorite(currentUser.email, id);
+    await GoodHairApi.addFavorite(currentUser.email, id);
     setFavoritedIds(new Set([...favoritedIds, id]));
   }
 

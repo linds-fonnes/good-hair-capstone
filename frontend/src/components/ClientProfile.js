@@ -4,8 +4,13 @@ import GoodHairApi from "../api/api";
 
 function ClientProfile() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const [profile, setProfile] = useState(null);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    zipcode: "",
+    email: "",
+    favorite_stylists: [],
+  });
   const [formErrors, setFormErrors] = useState([]);
 
   //going to need to make api call to get profile info and
@@ -14,23 +19,16 @@ function ClientProfile() {
   useEffect(() => {
     async function getProfile() {
       const userProf = await GoodHairApi.getCurrentUser(currentUser);
-      setProfile(userProf.data);
+      setFormData({
+        first_name: userProf.data.first_name,
+        last_name: userProf.data.last_name,
+        zipcode: userProf.data.zipcode,
+        email: userProf.data.email,
+        favorite_stylists: userProf.data.favorite_stylists,
+      });
     }
     getProfile();
   }, [currentUser]);
-
-  useEffect(() => {
-    async function getFormData() {
-      setFormData({
-        first_name: profile.first_name,
-        last_name: profile.last_name,
-        email: profile.email,
-        zipcode: profile.zipcode,
-        favorite_stylists: profile.favorite_stylists,
-      });
-    }
-    getFormData();
-  }, [profile]);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -104,7 +102,6 @@ function ClientProfile() {
 
         <div>
           <h2>Favorites</h2>
-          {/* <p>{profile.favorite_stylists}</p> */}
         </div>
       </div>
 

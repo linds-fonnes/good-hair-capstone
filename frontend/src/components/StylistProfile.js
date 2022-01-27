@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GoodHairApi from "../api/api";
+import uuid from "react-uuid";
 
 function StylistProfile() {
   const { email } = useParams();
@@ -14,7 +15,6 @@ function StylistProfile() {
         setProfile(await GoodHairApi.getStylistProfile(email));
       }
       getDetails();
-      console.log(profile);
     },
     [email]
   );
@@ -43,7 +43,7 @@ function StylistProfile() {
       <h4>Check Out My Work: </h4>
       <div>
         {profile.images.map((image) => (
-          <img src={image} alt="image not available" />
+          <img src={image} alt="not available" key={uuid()} />
         ))}
       </div>
     </div>

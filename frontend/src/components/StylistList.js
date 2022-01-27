@@ -8,7 +8,6 @@ function StylistList() {
 
   async function search(zipcode) {
     let stylists = await GoodHairApi.getStylists(zipcode);
-    console.log("SEARCHED FOR THESE", stylists);
     setStylists(stylists);
   }
 
