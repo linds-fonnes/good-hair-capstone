@@ -44,10 +44,10 @@ npm start
 - API
 https://www.zip-codes.com/zip-code-api-documentation.asp
 
- -Node
- -Express
- -React
- -Boostrap
+ - Node
+ - Express
+ - React
+ - Boostrap
  - PostgreSQL
 
 
