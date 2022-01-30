@@ -47,6 +47,7 @@ function ClientSignupForm({ signup }) {
               <input
                 className="form-control"
                 name="password"
+                type="password"
                 value={formData.password}
                 onChange={handleChange}
               />

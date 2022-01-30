@@ -121,10 +121,11 @@ function ClientProfile() {
         </div>
       </div>
 
-      <button className="btn btn-danger btn-block mt-4">
-        <Link to="/" onClick={handleAccountRemoval}></Link>
-        Delete Account
-      </button>
+      <Link to="/" onClick={handleAccountRemoval}>
+        <button className="btn btn-danger btn-block mt-4">
+          Delete Account
+        </button>
+      </Link>
 
       {formErrors.lengths ? <p>{formErrors}</p> : null}
     </div>

@@ -36,7 +36,7 @@ class GoodHairApi {
 
   static async signup(data) {
     let res = await this.request(`clients/register`, data, "post");
-    return res;
+    return res.data.token;
   }
 
   static async login(data) {
@@ -57,6 +57,7 @@ class GoodHairApi {
   static async addFavorite(clientEmail, stylistEmail) {}
 
   static async deleteUser(email) {
+    console.log("HELLO", email);
     let res = await this.request(`clients/${email}/profile`);
     return res.data;
   }
