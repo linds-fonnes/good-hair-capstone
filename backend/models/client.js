@@ -86,20 +86,15 @@ class Client {
       [client_email]
     );
     let currentFavorites = queryFavorites.rows[0]["?column?"];
-    console.log("1", currentFavorites);
-    currentFavorites = currentFavorites.slice(1, -1);
-    console.log("2", currentFavorites);
-    currentFavorites = currentFavorites.split(",");
-    console.log("3", currentFavorites);
-    const stripped = currentFavorites.map((f) => f.slice(1, -1));
-    console.log("4", stripped);
-    const doubleQuotes = stripped.map((val) => val.replace(/\'/g, '"')); //.replaceAll(/\"/g, "'") (/'/g, '"'
-    console.log("5", doubleQuotes);
-    currentFavorites = [...doubleQuotes, stylist_email];
-    console.log("6", currentFavorites);
+    console.log(currentFavorites);
+    const parsed = JSON.parse(currentFavorites);
+    parsed.push(stylist_email);
+    const str = JSON.stringify(parsed);
+    console.log(str, typeof str);
     const result = await db.query(
-      `UPDATE CLIENTS SET favorite_stylists='{"favorite_stylists": ${currentFavorites}}' WHERE email='${client_email}'`
+      `UPDATE CLIENTS SET favorite_stylists='{"favorite_stylists": ${str}}' WHERE email='${client_email}'`
     );
+    console.log(result);
     return result.rows[0]
       ? result.rows[0]
       : new BadRequestError("Error adding stylist to favorites");

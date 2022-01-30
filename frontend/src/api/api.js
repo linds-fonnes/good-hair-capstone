@@ -55,6 +55,11 @@ class GoodHairApi {
   }
 
   static async addFavorite(clientEmail, stylistEmail) {}
+
+  static async deleteUser(email) {
+    let res = await this.request(`clients/${email}/profile`);
+    return res.data;
+  }
 }
 
 export default GoodHairApi;

@@ -26,29 +26,43 @@ function LoginForm({ login }) {
 
   return (
     <div>
-      <h1>Login</h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>Email </label>
-          <input
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <label>Password </label>
-          <input
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          {formErrors.length ? <p>{formErrors}</p> : null}
-          <button type="submit" onSubmit={handleSubmit}>
-            Submit
-          </button>
-        </form>
+      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <h1>Login</h1>
+        <div className="card">
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Email </label>
+                <input
+                  className="form-control"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Password </label>
+                <input
+                  className="form-control"
+                  name="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {formErrors.length ? <p>{formErrors}</p> : null}
+              <button
+                className="btn btn-primary float-right"
+                type="submit"
+                onSubmit={handleSubmit}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

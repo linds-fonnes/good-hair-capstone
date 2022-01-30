@@ -23,7 +23,7 @@ function App() {
             GoodHairApi.token = token;
             let user = await GoodHairApi.getCurrentUser(email);
             setCurrentUser(user.data.email);
-            setFavoritedIds(new Set(user.data.favorite_stylists));
+            //setFavoritedIds(new Set(user.data.favorite_stylists));
           } catch (err) {
             console.error("loadUserInfo error:", err);
             setCurrentUser(null);

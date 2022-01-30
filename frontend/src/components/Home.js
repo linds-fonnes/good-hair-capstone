@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 function Homepage() {
   const { currentUser } = useContext(UserContext);
-  console.log("currentUSEr", currentUser);
+
   return (
-    <div>
+    <div className="container text-center">
       <h1>Good Hair</h1>
       {currentUser ? (
         <div>

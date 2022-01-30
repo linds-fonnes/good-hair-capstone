@@ -28,40 +28,67 @@ function ClientSignupForm({ signup }) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Email </label>
-        <input name="email" value={formData.email} onChange={handleChange} />
-        <label>Password </label>
-        <input
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <label>First Name </label>
-        <input
-          name="first_name"
-          value={formData.first_name}
-          onChange={handleChange}
-        />
-        <label>Last Name </label>
-        <input
-          name="last_name"
-          value={formData.last_name}
-          onChange={handleChange}
-        />
-        <label>Zipcode </label>
-        <input
-          name="zipcode"
-          value={formData.zipcode}
-          onChange={handleChange}
-        />
-
-        {formErrors.length ? <p>{formErrors}</p> : null}
-        <button type="submit" onSubmit={handleSubmit}>
-          Submit
-        </button>
-      </form>
+    <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <h1>Register</h1>
+      <div className="card">
+        <div className="card-body">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Email </label>
+              <input
+                className="form-control"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Password </label>
+              <input
+                className="form-control"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>First Name </label>
+              <input
+                className="form-control"
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Last Name </label>
+              <input
+                className="form-control"
+                name="last_name"
+                value={formData.last_name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Zipcode </label>
+              <input
+                className="form-control"
+                name="zipcode"
+                value={formData.zipcode}
+                onChange={handleChange}
+              />
+            </div>
+            {formErrors.length ? <p>{formErrors}</p> : null}
+            <button
+              className="btn btn-primary float-right"
+              type="submit"
+              onSubmit={handleSubmit}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

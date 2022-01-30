@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../UserContext";
 import GoodHairApi from "../api/api";
+import { Link } from "react-router-dom";
 
 function ClientProfile() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -64,46 +65,66 @@ function ClientProfile() {
     setFormErrors([]);
   }
 
-  return (
-    <div>
-      <h1>Profile</h1>
-      <div>
-        <form>
-          <div>
-            <label>Email</label>
-            <p>{formData.email}</p>
-          </div>
-          <div>
-            <label>First Name</label>
-            <input
-              name="first_name"
-              value={formData.first_name}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Zipcode</label>
-            <input
-              name="zipcode"
-              value={formData.zipcode}
-              onChange={handleChange}
-            />
-          </div>
-          <button onClick={handleSubmit}>Save Changes</button>
-        </form>
+  async function handleAccountRemoval(evt) {
+    try {
+      await GoodHairApi.deleteUser(formData.email);
+    } catch (e) {
+      setFormErrors(e);
+      return;
+    }
+  }
 
-        <div>
-          <h2>Favorites</h2>
+  return (
+    <div className="cold-md-6 col-lg-4 offset-md-3 offset-lg-4">
+      <h1>Profile</h1>
+      <div className="card">
+        <div className="card-body">
+          <form>
+            <div className="form-group">
+              <label>Email</label>
+              <p className="form-control-plaintext">{formData.email}</p>
+            </div>
+            <div className="form-group">
+              <label>First Name</label>
+              <input
+                className="form-control"
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Last Name</label>
+              <input
+                className="form-control"
+                name="last_name"
+                value={formData.last_name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Zipcode</label>
+              <input
+                className="form-control"
+                name="zipcode"
+                value={formData.zipcode}
+                onChange={handleChange}
+              />
+            </div>
+            <button
+              onClick={handleSubmit}
+              className="btn btn-primary btn-block mt-4"
+            >
+              Save Changes
+            </button>
+          </form>
         </div>
       </div>
+
+      <button className="btn btn-danger btn-block mt-4">
+        <Link to="/" onClick={handleAccountRemoval}></Link>
+        Delete Account
+      </button>
 
       {formErrors.lengths ? <p>{formErrors}</p> : null}
     </div>

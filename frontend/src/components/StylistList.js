@@ -12,7 +12,7 @@ function StylistList() {
   }
 
   return (
-    <div>
+    <div className="col-md-8 offset-md-2">
       <SearchForm searchFor={search} />
       {stylists && stylists.length ? (
         <StylistCardList stylists={stylists} />

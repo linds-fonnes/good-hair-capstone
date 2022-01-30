@@ -8,15 +8,19 @@ function Navigation({ logout }) {
 
   function loggedInNav() {
     return (
-      <ul>
-        <li>
-          <NavLink to="/clients/profile">Profile</NavLink>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/clients/profile">
+            Profile
+          </NavLink>
         </li>
-        <li>
-          <NavLink to="/stylists/search">Find a Stylist</NavLink>
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/stylists/search">
+            Find a Stylist
+          </NavLink>
         </li>
-        <li>
-          <NavLink to="/" onClick={logout}>
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/" onClick={logout}>
             Logout
           </NavLink>
         </li>
@@ -26,17 +30,21 @@ function Navigation({ logout }) {
 
   function loggedOutNav() {
     return (
-      <ul>
-        <li>
-          <NavLink to="/clients">Client Registration</NavLink>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/clients">
+            Client Registration
+          </NavLink>
         </li>
       </ul>
     );
   }
 
   return (
-    <nav>
-      <Link to="/">Good Hair</Link>
+    <nav className="Navigation navbar navbar-expand-md">
+      <Link className="navbar-brand" to="/">
+        Good Hair
+      </Link>
       {currentUser ? loggedInNav() : loggedOutNav()}
     </nav>
   );
